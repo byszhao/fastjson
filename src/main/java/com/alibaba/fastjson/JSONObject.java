@@ -133,6 +133,16 @@ public class JSONObject extends JSON implements Map<String, Object>, Cloneable, 
 
         return castToBoolean(value);
     }
+	
+    public boolean optBoolean(String key, boolean fallback) {
+        Object value = get(key);
+
+        if (value == null) {
+            return fallback;
+        }
+
+        return castToBoolean(value);
+    }
 
     public byte[] getBytes(String key) {
         Object value = get(key);
@@ -201,6 +211,16 @@ public class JSONObject extends JSON implements Map<String, Object>, Cloneable, 
 
         return castToInt(value).intValue();
     }
+    
+    public int optInt(String key, int fallback) {
+        Object value = get(key);
+
+        if (value == null) {
+            return fallback;
+        }
+
+        return castToInt(value).intValue();
+    }
 
     public Long getLong(String key) {
         Object value = get(key);
@@ -213,6 +233,16 @@ public class JSONObject extends JSON implements Map<String, Object>, Cloneable, 
 
         if (value == null) {
             return 0L;
+        }
+
+        return castToLong(value).longValue();
+    }
+    
+    public long optLong(String key, long fallback) {
+        Object value = get(key);
+
+        if (value == null) {
+            return fallback;
         }
 
         return castToLong(value).longValue();
@@ -249,6 +279,16 @@ public class JSONObject extends JSON implements Map<String, Object>, Cloneable, 
 
         return castToDouble(value);
     }
+    
+    public double optDouble(String key, double fallback) {
+        Object value = get(key);
+
+        if (value == null) {
+            return fallback;
+        }
+
+        return castToDouble(value);
+    }    
 
     public BigDecimal getBigDecimal(String key) {
         Object value = get(key);
@@ -267,6 +307,16 @@ public class JSONObject extends JSON implements Map<String, Object>, Cloneable, 
 
         if (value == null) {
             return null;
+        }
+
+        return value.toString();
+    }
+
+    public String optString(String key, String fallback) {
+        Object value = get(key);
+
+        if (value == null) {
+            return fallback;
         }
 
         return value.toString();
