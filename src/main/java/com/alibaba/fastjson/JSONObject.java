@@ -140,8 +140,14 @@ public class JSONObject extends JSON implements Map<String, Object>, Cloneable, 
         if (value == null) {
             return fallback;
         }
+		boolean result = fallback;
+		try {
+            result = castToBoolean(value);
+		}catch (Exception e) {
+            return fallback;
+		}
 
-        return castToBoolean(value);
+        return result;
     }
 
     public byte[] getBytes(String key) {
@@ -218,8 +224,14 @@ public class JSONObject extends JSON implements Map<String, Object>, Cloneable, 
         if (value == null) {
             return fallback;
         }
+		int result = fallback;
+		try {
+            result = castToInt(value).intValue();
+		}catch (Exception e) {
+            return fallback;
+		}
 
-        return castToInt(value).intValue();
+        return result;
     }
 
     public Long getLong(String key) {
@@ -244,8 +256,14 @@ public class JSONObject extends JSON implements Map<String, Object>, Cloneable, 
         if (value == null) {
             return fallback;
         }
+		long result = fallback;
+		try {
+            result = castToLong(value).longValue();
+		}catch (Exception e) {
+            return fallback;
+		}
 
-        return castToLong(value).longValue();
+        return result;
     }
 
     public Float getFloat(String key) {
@@ -286,8 +304,14 @@ public class JSONObject extends JSON implements Map<String, Object>, Cloneable, 
         if (value == null) {
             return fallback;
         }
+		double result = fallback;
+		try {
+            result = castToDouble(value);
+		}catch (Exception e) {
+            return fallback;
+		}
 
-        return castToDouble(value);
+        return result;
     }    
 
     public BigDecimal getBigDecimal(String key) {
